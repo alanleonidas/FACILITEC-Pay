@@ -2,24 +2,41 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frament_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/tdp_tela"
     android:backgroundTintMode="screen"
     android:orientation="vertical"
-    tools:context=".Principal_Login">
+    tools:context=".ui.login.LoginFragment">
+
 
     <ImageView
         android:id="@+id/tdpFundo"
         android:layout_width="match_parent"
         android:layout_height="230dp"
+        android:layout_margin="0dp"
         android:contentDescription="@string/todo"
         android:src="@drawable/fundomaterialdesign"
-        app:layout_constraintEnd_toEndOf="match_parent"
-        app:layout_constraintStart_toStartOf="match_parent"
-        app:layout_constraintTop_toTopOf="match_parent"
+        app:layout_constraintEnd_toEndOf="@+id/frament_login"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/frament_login"
+        app:layout_constraintTop_toTopOf="@+id/frament_login"
         tools:context=".Principal_Login"
         tools:ignore="ImageContrastCheck" />
+
+    <Button
+        android:id="@+id/menu"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/ic_baseline_menu_24"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="@+id/frament_login"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="@+id/frament_login"
+        app:layout_constraintTop_toTopOf="@+id/frament_login" />
 
     <View
         android:id="@+id/containerLogin"
@@ -46,8 +63,8 @@
     <Spinner
         android:id="@+id/spinnerRepresentantes"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/textView"
+        android:layout_height="48dp"
+        app:layout_constraintStart_toStartOf="@+id/containerLogin"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         android:layout_margin="10dp"
         android:minHeight="48dp"
@@ -79,6 +96,7 @@
         android:background="@color/cinzaPrincipal"
         android:text="@string/entrar"
         />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

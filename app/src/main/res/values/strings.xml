@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">FACILITEC Pay</string>
+    <string name="login_facilite_comanda_pay">Login FACILITE Comanda Pay</string>
+    <string name="todo">TODO</string>
+    <string name="comboRepresentante">Selecione o Representante</string>
+    <string name="campoSenha">Digite a Senha de Acesso</string>
+    <string name="labelSenhaLogin">Digite a Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="title_activity_login">FACILITEC Pay</string>
+    <string name="navigation_drawer_open">Abrir</string>
+    <string name="navigation_drawer_close">Fechar</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Configuração</string>
+    <string name="menu_login">Login</string>
+    <string name="menu_configuracoes">Configurações</string>
+    <string name="menu_sobre">Sobre</string>
+    <string name="menu_sair">Sair</string>
 </resources>

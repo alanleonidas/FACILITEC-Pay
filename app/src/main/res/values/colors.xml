@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="vermelhoTDP">#5d1313</color>
+    <color name="vermelhoSecundario">#ba2828</color>
+    <color name="cinzaPrincipal">#3d3d3d</color>
+    <color name="cinzaSecundario">#595959</color>
+    <color name="cinzaTerceario">#757575</color>
+    <color name="cinzaFraco">#b2b2b2</color>
+
+
 </resources>

@@ -86,12 +86,13 @@ public class Login extends AppCompatActivity {
         int id= item.getItemId();
 
         if (id == R.id.nav_configuracoes) {
-            Toast.makeText(this,"Chamando configuração",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, Configuracao.class);
+            startActivity(intent);
         } else if (id == R.id.nav_sobre){
             Intent intent = new Intent(this, Sobre.class);
             startActivity(intent);
         } else {
-            finishAffinity();
+            finish();//finishAffinity();
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

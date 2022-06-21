@@ -5,7 +5,12 @@
     <string name="comboRepresentante">Selecione o Representante</string>
     <string name="campoSenha">Digite a Senha de Acesso</string>
     <string name="labelSenhaLogin">Digite a Senha</string>
+    <string name="labelIPServidor">Informe o IP do Servidor, ex: 192.168.1.2</string>
+    <string name="labelPortaServidor">Informe a Porta de Comunicaçãp com o Servidor, ex: 8688</string>
     <string name="entrar">Entrar</string>
+    <string name="gravar_parametro">Gravar parâmetros</string>
+    <string name="testar_conexao">Testar conexão</string>
+    <string name="sincronizar_dados">Sincronizar dados</string>
     <string name="title_activity_login">FACILITEC Pay</string>
     <string name="navigation_drawer_open">Abrir</string>
     <string name="navigation_drawer_close">Fechar</string>

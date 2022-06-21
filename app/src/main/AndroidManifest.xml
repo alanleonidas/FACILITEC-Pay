@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FACILITECPay">
         <activity
+            android:name=".Configuracao"
+            android:exported="false" />
+        <activity
             android:name=".Sobre"
             android:exported="false" />
         <activity

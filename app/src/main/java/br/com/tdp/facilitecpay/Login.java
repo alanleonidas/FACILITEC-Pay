@@ -1,16 +1,20 @@
 package br.com.tdp.facilitecpay;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -25,6 +29,8 @@ public class Login extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityLoginBinding binding;
+    private Button btnMenu;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +38,18 @@ public class Login extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarLogin.toolbar);
-        DrawerLayout drawer = binding.drawerLayout;
+        btnMenu = (Button)findViewById(R.id.menu);
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickMenu();
+                }
+            });
+        drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -50,6 +62,10 @@ public class Login extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
         navigationView.setNavigationItemSelectedListener(this::OnNavigationItemSelectedListener);
 
+    }
+
+    public void onClickMenu(){
+        drawer.open();
     }
 
     @Override
@@ -72,16 +88,13 @@ public class Login extends AppCompatActivity {
         if (id == R.id.nav_configuracoes) {
             Toast.makeText(this,"Chamando configuração",Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_sobre){
-            Toast.makeText(this,"Chamando sobre",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, Sobre.class);
+            startActivity(intent);
         } else {
             finishAffinity();
         }
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerLayout.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    public void terminateApp(){
-        finishAffinity();
-    }
 }

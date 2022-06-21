@@ -8,11 +8,15 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="vermelhoTDP">#5d1313</color>
+    <color name="vermelhoTDPGradA">#4d1313</color>
+    <color name="vermelhoTDPGradB">#5d1313</color>
+    <color name="vermelhoTDPGradC">#6d0601</color>
+    <color name="vermelhoTDPGradD">#7d0601</color>
+    <color name="vermelhoTDPGradE">#8d0601</color>
     <color name="vermelhoSecundario">#ba2828</color>
     <color name="cinzaPrincipal">#3d3d3d</color>
     <color name="cinzaSecundario">#595959</color>
     <color name="cinzaTerceario">#757575</color>
-    <color name="cinzaFraco">#b2b2b2</color>
-
-
+    <color name="cinzaFracoPrimario">#e1e2e1</color>
+    <color name="cinzaFracoSecundario">#f5f5f6</color>
 </resources>

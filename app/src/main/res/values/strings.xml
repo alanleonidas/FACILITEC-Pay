@@ -15,4 +15,15 @@
     <string name="menu_configuracoes">Configurações</string>
     <string name="menu_sobre">Sobre</string>
     <string name="menu_sair">Sair</string>
+    <string name="title_activity_sobre">Sobre</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="tituloVersao">Versão do Aplicativo</string>
+    <string name="tituloServidor">Versão do Servidor</string>
+    <string name="tituloNumerdoSerie">Número de Série</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

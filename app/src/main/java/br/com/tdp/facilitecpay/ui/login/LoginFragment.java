@@ -18,13 +18,12 @@ import androidx.lifecycle.ViewModelProvider;
 import br.com.tdp.facilitecpay.R;
 import br.com.tdp.facilitecpay.databinding.FragmentLoginBinding;
 
-public class LoginFragment extends Fragment implements View.OnClickListener {
+public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
     //private Spinner spinnerRepresentantes;
     //private EditText edtTextSenha;
     //private ImageButton ibtnMenu;
-    private Button btnMenu;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,10 +34,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        //spinnerRepresentantes = getView().findViewById(R.id.spinnerRepresentantes);
-        //edtTextSenha = getView().findViewById(R.id.editPassRepresentantes);
-        btnMenu = root.findViewById(R.id.menu);
-        btnMenu.setOnClickListener(this);
         return root;
     }
 
@@ -48,13 +43,5 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         binding = null;
     }
 
-    @Override
-    public void onClick(View view) {
-        DrawerLayout drawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else{
-            drawerLayout.openDrawer(GravityCompat.START);
-        }
-    }
+
 }

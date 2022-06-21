@@ -1,6 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    layout_constraintDimensionRatio="4dp"
+    android:layout_margin="7dp">
 
-</LinearLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textTituloVersao"
+            android:layout_width="160dp"
+            android:layout_height="30dp"
+            android:layout_margin="3dp"
+            android:padding="5dp"
+            android:text="Versão do Aplicativo: "
+            android:textColor="@color/cinzaPrincipal"
+            android:textSize="16dp"
+            android:textStyle="normal" />
+
+
+        <TextView
+            android:id="@+id/textVersao"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="3dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:padding="5dp"
+            android:text="57.4.7.0"
+            android:textColor="@color/cinzaPrincipal"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textTituloVersaoServidor"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:padding="5dp"
+            android:text="Versão do Servidor: "
+            android:textColor="@color/cinzaPrincipal"
+            android:textSize="16dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/textVersaoServidor"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="3dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:padding="5dp"
+            android:text="Sem Conexão com Servidor."
+            android:textColor="@color/cinzaPrincipal"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textTituloNumeroSerie"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:padding="5dp"
+            android:text="Número de Série: "
+            android:textColor="@color/cinzaPrincipal"
+            android:textSize="16dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/textNUmeroSerie"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_margin="3dp"
+            android:padding="5dp"
+            android:text="XXXXXXXXXXXXXXX."
+            android:textColor="@color/cinzaPrincipal"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+    </GridLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

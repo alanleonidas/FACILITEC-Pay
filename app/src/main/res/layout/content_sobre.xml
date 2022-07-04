@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     layout_constraintDimensionRatio="4dp"
-    android:layout_margin="7dp">
+    android:layout_margin="7dp"
+    android:screenOrientation="portrait">
 
     <GridLayout
         android:layout_width="match_parent"

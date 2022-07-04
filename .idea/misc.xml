@@ -3,8 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/borda_aberto.xml" value="0.173" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/borda_comanda.xml" value="0.173" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/borda_recebimento.xml" value="0.174" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/borda_status.xml" value="0.172" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/borda_status_recebimento.xml" value="0.172" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/container_componente_borda_comanda.xml" value="0.1675" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/container_componente_numero_comanda.xml" value="0.1685" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/container_componentes_login.xml" value="0.2115" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/edit_text.xml" value="0.2115" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.162" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/ic_launcher_background.xml" value="0.187" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/ic_menu_camera.xml" value="0.213" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.213" />
@@ -14,21 +22,31 @@
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/ic_sobre.xml" value="0.213" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/side_nav_bar.xml" value="0.213" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/activity_configuracao.xml" value="0.196875" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/activity_finalizacao.xml" value="0.25" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/activity_lista_comandas.xml" value="0.25" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/activity_login.xml" value="0.2554347826086957" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/activity_sobre.xml" value="0.371875" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/app_bar_login.xml" value="0.2554347826086957" />
-        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/content_configuracao.xml" value="0.1828125" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/card_view_comandas_para_finalizacao.xml" value="0.5" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/content_configuracao.xml" value="0.3117709437963945" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/content_login.xml" value="0.2554347826086957" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/content_sobre.xml" value="0.17760416666666667" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/fragment_gallery.xml" value="0.2554347826086957" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/fragment_home.xml" value="0.2554347826086957" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/fragment_login.xml" value="0.19166666666666668" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/fragment_slideshow.xml" value="0.2554347826086957" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/menu_listacomandas.xml" value="0.1453125" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/nav_header_login.xml" value="0.2554347826086957" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/menu/activity_main_drawer.xml" value="0.371875" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/menu/login.xml" value="0.371875" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/menu/menu_finalizacao.xml" value="0.196875" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/menu/menu_listacomandas.xml" value="0.15833333333333333" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/menu/menu_sobre.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Allan/AppData/Local/Android/Sdk/platforms/android-32/data/res/drawable/popup_background_material.xml" value="0.289" />
+        <entry key="..\:/Users/Allan/AppData/Local/Android/Sdk/platforms/android-32/data/res/drawable/spinner_background_material.xml" value="0.289" />
+        <entry key="..\:/Users/Allan/AppData/Local/Android/Sdk/platforms/android-32/data/res/drawable/spinner_textfield_background_material.xml" value="0.289" />
+        <entry key="..\:/Users/Allan/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.153125" />
       </map>
     </option>
   </component>

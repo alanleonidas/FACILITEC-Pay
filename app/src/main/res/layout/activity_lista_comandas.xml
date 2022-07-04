@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/content_ComandasParaFinalizacao"
+    android:background="@color/cinzaFracoPrimario"
+    android:backgroundTintMode="screen"
+    android:orientation="vertical"
+    tools:context=".ListaComandas">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:id="@+id/topoListaComanda">
+            <Spinner
+                android:id="@+id/spinnerTipoComanda"
+                style="@android:style/Widget.Material.Spinner.Underlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".65"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:autofillHints=""
+                android:popupTheme="@color/cinzaPrincipal"
+                android:backgroundTint="@color/vermelhoTDP"
+                android:backgroundTintMode="src_in"
+                android:clickable="true"
+                android:dropDownSelector="@color/cinzaPrincipal"
+                android:gravity="center"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:spinnerMode="dialog"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:focusable="true" />
+            <TextView
+                android:id="@+id/TotalComandas"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".35"
+                android:textColor="@color/vermelhoTDP"
+                android:text="420 Comandas"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/swipeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lvComandasParaFinalizacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

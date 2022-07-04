@@ -42,7 +42,8 @@ public class Sobre extends AppCompatActivity {
     public void permissoes() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_PHONE_STATE)) {
-            } else {
+            }
+            else {
                 int PERMISSAO_REQUEST = 128;
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, PERMISSAO_REQUEST);
             }
@@ -59,14 +60,6 @@ public class Sobre extends AppCompatActivity {
             serial = Build.SERIAL;
         }
         textNumeroSerie.setText(serial);
-
-        /*if ((bundle != null) && (bundle.containsKey("SERVER"))){
-            boletim = (BoletimTecnico)bundle.getSerializable("BOLETIM");
-
-            tvdResumo.setText(boletim.getBT_RESUMONOTA());
-            tvdDetalhes.setText(boletim.getBT_DETALHESNOTA());
-            tvdParametros.setText(boletim.getBT_PARAMENVOLV());
-        }*/
     }
 
     @Override

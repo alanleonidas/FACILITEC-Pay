@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     layout_constraintDimensionRatio="4dp"
-    android:layout_margin="7dp">
+    android:layout_margin="7dp"
+    tools:context=".Configuracao">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,9 +18,9 @@
             android:layout_height="30dp"
             android:layout_margin="3dp"
             android:padding="5dp"
-            android:text="IP do Servidor"
+            android:text="@string/ip_do_servidor"
             android:textColor="@color/cinzaPrincipal"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
 
@@ -26,13 +28,12 @@
             android:id="@+id/editIPServidor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_eye"
+            android:autofillHints=""
             android:hint="@string/labelIPServidor"
             android:inputType="textPhonetic"
             android:minHeight="48dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSelectHandleRight="@android:drawable/ic_lock_lock"
-            android:autofillHints="" />
+            android:textColorHint="#757575" />
 
         <TextView
             android:id="@+id/textTituloPorta"
@@ -40,9 +41,9 @@
             android:layout_height="30dp"
             android:layout_margin="3dp"
             android:padding="5dp"
-            android:text="Porta do Servidor"
+            android:text="@string/porta_do_servidor"
             android:textColor="@color/cinzaPrincipal"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
 
@@ -50,13 +51,43 @@
             android:id="@+id/editPortaServidor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_eye"
+            android:autofillHints=""
             android:hint="@string/labelPortaServidor"
             android:inputType="number"
             android:minHeight="48dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSelectHandleRight="@android:drawable/ic_lock_lock"
-            android:autofillHints="" />
+            android:textColorHint="#757575" />
+
+        <TextView
+            android:id="@+id/textTituloIntegracao"
+            android:layout_width="160dp"
+            android:layout_height="30dp"
+            android:layout_margin="3dp"
+            android:padding="5dp"
+            android:text="@string/integrador"
+            android:textColor="@color/cinzaPrincipal"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinnerIntegrador"
+            style="@android:style/Widget.Material.Spinner.Underlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:popupTheme="@color/cinzaPrincipal"
+            android:backgroundTint="@color/vermelhoTDP"
+            android:backgroundTintMode="src_in"
+            android:clickable="true"
+            android:dropDownSelector="@color/cinzaPrincipal"
+            android:gravity="center"
+            android:hint="@string/labelPortaServidor"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:spinnerMode="dialog"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:focusable="true" />
 
         <Button
             android:id="@+id/btnGravarParâmetros"
@@ -83,6 +114,7 @@
             android:background="@color/cinzaPrincipal"
             android:text="@string/sincronizar_dados"
             />
+
     </LinearLayout>
 
 

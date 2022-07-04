@@ -25,6 +25,19 @@
         tools:context=".Principal_Login"
         tools:ignore="ImageContrastCheck" />
 
+    <ImageView
+        android:id="@+id/tdpLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="50dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/logo_app"
+        app:layout_constraintEnd_toEndOf="@+id/tdpFundo"
+        app:layout_constraintStart_toStartOf="@+id/tdpFundo"
+        app:layout_constraintTop_toTopOf="@+id/tdpFundo"
+        tools:context=".Principal_Login"
+        tools:ignore="ImageContrastCheck" />
+
     <Button
         android:id="@+id/menu"
         android:layout_width="60dp"
@@ -56,18 +69,29 @@
         android:padding="5dp"
         android:text="@string/login_facilite_comanda_pay"
         android:textAlignment="center"
-        android:textColor="#B71C1C"
-        android:textSize="16sp"
+        android:textColor="@color/vermelhoTDP"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/spinnerRepresentantes"
+        style="@android:style/Widget.Material.Spinner.Underlined"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         app:layout_constraintStart_toStartOf="@+id/containerLogin"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         android:layout_margin="10dp"
         android:minHeight="48dp"
+        android:popupTheme="@color/cinzaPrincipal"
+        android:backgroundTint="@color/vermelhoTDP"
+        android:backgroundTintMode="src_in"
+        android:clickable="true"
+        android:dropDownSelector="@color/cinzaPrincipal"
+        android:gravity="center"
+        android:inputType="text"
+        android:spinnerMode="dialog"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        tools:ignore="SpeakableTextPresentCheck"
         android:contentDescription="@string/comboRepresentante"
         android:autofillHints="@string/comboRepresentante"/>
 
@@ -76,7 +100,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:drawableRight="@drawable/ic_eye"
         android:hint="@string/labelSenhaLogin"
         android:inputType="textPassword"
         android:minHeight="48dp"
@@ -96,6 +119,35 @@
         android:background="@color/cinzaPrincipal"
         android:text="@string/entrar"
         />
+
+    <LinearLayout
+        android:id="@+id/linearReconectar"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintStart_toStartOf="@+id/containerLogin"
+        app:layout_constraintTop_toBottomOf="@+id/containerLogin"
+        android:visibility="visible"
+        android:orientation="vertical">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animacao"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:lottie_rawRes="@raw/server_offline"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            />
+        <Button
+            android:id="@+id/btnTentarNovamente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/cinzaPrincipal"
+            android:text="@string/reconectar"
+            />
+
+    </LinearLayout>
+
 
 
 

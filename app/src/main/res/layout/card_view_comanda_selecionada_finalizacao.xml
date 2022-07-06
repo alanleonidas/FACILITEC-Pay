@@ -2,19 +2,20 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="130dp"
+    android:layout_height="80dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_view_comandas_para_finalizacao"
-    android:clickable="true"
+    android:id="@+id/card_view_comandas_selecionada_finalizacao"
+    android:clickable="false"
     android:descendantFocusability="blocksDescendants"
     android:focusable="true"
     android:focusableInTouchMode="false"
+    android:background="@color/cinzaFracoPrimario"
     android:foreground="?attr/selectableItemBackground"
     app:cardCornerRadius="4dp"
     android:layout_margin="7dp">
 
     <RelativeLayout
-        android:id="@+id/card_constraint"
+        android:id="@+id/card_constraint_selecionada"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -26,7 +27,7 @@
             app:layout_constraintCircleRadius="20dp">
 
             <TextView
-                android:id="@+id/tvNumeroComanda"
+                android:id="@+id/tvNumeroComandaSelecionada"
                 android:layout_width="match_parent"
                 android:layout_height="27dp"
                 android:padding="2dp"
@@ -43,18 +44,18 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
-            android:id="@+id/llClienteMesa"
+            android:id="@+id/llClienteMesaSelecionada"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginLeft="85dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:orientation="vertical"
-            android:layout_toStartOf="@+id/llStatus">
+            android:layout_toStartOf="@+id/llStatusSelecionada">
 
 
             <TextView
-                android:id="@+id/tvCliente"
+                android:id="@+id/tvClienteSelecionada"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
                 android:padding="2dp"
@@ -65,7 +66,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvMesa"
+                android:id="@+id/tvMesaSelecionada"
                 android:layout_width="100dp"
                 android:layout_height="20dp"
                 android:padding="2dp"
@@ -80,7 +81,7 @@
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/llStatus"
+            android:id="@+id/llStatusSelecionada"
             android:layout_width="85dp"
             android:layout_height="22dp"
             android:layout_marginTop="10dp"
@@ -91,7 +92,7 @@
             android:layout_alignParentEnd="true">
 
             <TextView
-                android:id="@+id/tvStatus"
+                android:id="@+id/tvStatusSelecionada"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:text="@string/ocupado"
@@ -106,92 +107,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints"  />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-            android:id="@+id/llTitulos"
-            android:layout_width="match_parent"
-            android:layout_height="22dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal"
-            android:layout_below="@+id/view_card_numerocomanda">
-
-            <TextView
-                android:id="@+id/tvTituloTotalPedido"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight=".30"
-                android:text="@string/total_pedido"
-                android:textAlignment="gravity"
-                android:textColor="@color/cinzaTitulo"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvTituloRecebido"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight=".30"
-                android:text="@string/recebido"
-                android:textAlignment="gravity"
-                android:textColor="@color/cinzaTitulo"
-                android:textSize="14sp"/>
-
-            <TextView
-                android:id="@+id/tvTituloAReceber"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight=".60"
-                android:text="@string/receber"
-                android:textAlignment="textEnd"
-                android:textColor="@color/cinzaTitulo"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llTValores"
-            android:layout_width="match_parent"
-            android:layout_height="22dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal"
-            android:layout_below="@+id/llTitulos">
-
-            <TextView
-                android:id="@+id/tvValorTotalPedido"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight=".30"
-                android:text="@string/r_1_110_99"
-                android:textAlignment="gravity"
-                android:textColor="@color/cinzaPrincipal"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvValorRecebido"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight=".30"
-                android:text="@string/r_20_00"
-                android:textAlignment="gravity"
-                android:textColor="@color/recebimento"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvValorAReceber"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_weight=".60"
-                android:padding="0dp"
-                android:text="@string/r_1_090_99"
-                android:textAlignment="textEnd"
-                android:textColor="@color/cinzaPrincipalTexto"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
     </RelativeLayout>
 
 

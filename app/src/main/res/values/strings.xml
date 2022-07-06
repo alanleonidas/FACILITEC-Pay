@@ -62,4 +62,8 @@
     <string name="r_1_110_99">R$ 1.110,99</string>
     <string name="r_20_00">R$ 20,00</string>
     <string name="r_1_090_99">R$ 1.090,99</string>
+    <string name="r_x_xxx_xx">( - ) X.XXX,XX</string>
+    <string name="a_receber">À Receber</string>
+    <string name="desconto">Desconto</string>
+    <string name="total">Total</string>
 </resources>

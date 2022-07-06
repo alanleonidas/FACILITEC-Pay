@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contentDetalheFinalizacao"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cinzaFracoPrimario">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvTituloTotal"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/total"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/cinzaPrincipalTexto"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvValorTotalComanda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/tvTituloTotal"
+            android:text="@string/r_x_xxx_xx"
+            android:textAlignment="textEnd"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/cinzaPrincipalTexto"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/separacao"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llPagamentos"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:layout_below="@+id/tvTituloTotal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lvListaCobrancasPagamento"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:choiceMode="none"
+            android:dividerHeight="2px">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTDesconto"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/desconto"
+            android:textColor="@color/cinzaPrincipalTexto"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTotalDesconto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/tvTSaldo"
+            android:text="@string/r_x_xxx_xx"
+            android:textAlignment="textEnd"
+            android:textColor="@color/cinzaPrincipalTexto"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTSaldo"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTDesconto"
+            android:text="@string/a_receber"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/vermelhoSecundario"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/separacao"/>
+        <TextView
+            android:id="@+id/tvAReceber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTDesconto"
+            android:layout_toEndOf="@+id/tvTSaldo"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/r_x_xxx_xx"
+            android:textAlignment="textEnd"
+            android:textColor="@color/vermelhoSecundario"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

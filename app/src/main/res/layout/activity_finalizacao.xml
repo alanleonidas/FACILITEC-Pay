@@ -6,76 +6,91 @@
     android:layout_height="match_parent"
     android:background="@color/cinzaFracoPrimario"
     tools:context=".Finalizacao">
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llBarraBotoes"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/bFinalizacaoVoltar"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_weight=".45"
-            android:drawableTop="@drawable/ic_baseline_arrow_back_24"
-            android:text="Voltar"
-            android:background="@color/vermelhoTDP" />
-
-        <Button
-            android:id="@+id/bFinalizacaoConfirmar"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_weight=".45"
-            android:drawableTop="@drawable/ic_baseline_check_24"
-            android:text="Confirmar"
-            android:background="@color/vermelhoTDP"/>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llBotoesCobrancas"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
-        android:layout_margin="2dp"
-        android:background="@color/cinzaPrincipal"
-        app:layout_constraintBottom_toTopOf="@+id/llBarraBotoes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </ScrollView>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="2dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/llBotoesCobrancas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
         <include
             android:id="@+id/app_bar_login"
-            layout="@layout/card_view_comandas_para_finalizacao"
+            layout="@layout/card_view_comanda_selecionada_finalizacao"
             android:layout_width="match_parent"
-            android:layout_height="135dp" />
+            android:layout_height="80dp"
+            android:background="@color/cinzaFracoPrimario"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.cardview.widget.CardView
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:orientation="vertical"
+            android:background="@color/cinzaFracoPrimario"
+            app:layout_constraintBottom_toTopOf="@+id/llBotoesCobrancas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_login">
 
-        </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cinzaFracoPrimario">
+                <include layout="@layout/content_detalhe_finalizacao_comanda" />
+            </androidx.cardview.widget.CardView>
 
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llBarraBotoes"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:background="@color/cinzaPrincipal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/bFinalizacaoVoltar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".45"
+                android:layout_marginRight="1dp"
+                android:drawableTop="@drawable/ic_baseline_arrow_back_24"
+                android:text="Voltar"
+                android:background="@color/vermelhoTDP" />
+
+            <Button
+                android:id="@+id/bFinalizacaoConfirmar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".45"
+                android:layout_marginRight="1dp"
+                android:drawableTop="@drawable/ic_baseline_check_24"
+                android:text="Confirmar"
+                android:background="@color/vermelhoTDP"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llBotoesCobrancas"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:background="@color/cinzaPrincipal"
+            app:layout_constraintBottom_toTopOf="@+id/llBarraBotoes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lvFinalizadoras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -143,7 +145,7 @@ public class ListaComandasAdapterRecyclerView extends RecyclerView.Adapter<Lista
                         ComandasLiberadasModel comandasLiberadasModel = listComandasLiberadasModel.get(getLayoutPosition());
 
                         Intent it = new Intent(context, Finalizacao.class);
-                        //it.putExtra("COMANDA", comandasLiberadasModel);
+                        it.putExtra("COMANDA", (Serializable) comandasLiberadasModel);
                         context.startActivity(it);
                     }
                 }

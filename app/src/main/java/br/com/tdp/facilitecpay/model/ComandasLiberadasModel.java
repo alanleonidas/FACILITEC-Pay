@@ -1,10 +1,11 @@
 package br.com.tdp.facilitecpay.model;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 import java.util.Objects;
 
-public class ComandasLiberadasModel {
+public class ComandasLiberadasModel implements Serializable {
     private String COM_EMPRESA;
     private String COM_TIPOCOMANDA;
     private String COM_COMANDA;

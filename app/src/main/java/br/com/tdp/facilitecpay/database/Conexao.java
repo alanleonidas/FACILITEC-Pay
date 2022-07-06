@@ -21,9 +21,9 @@ public class Conexao {
             dadosFaciliteCPayOpenHelper = new DadosFaciliteCPayOpenHelper(context);
             conexao = dadosFaciliteCPayOpenHelper.getWritableDatabase();
 
-            Snackbar.make(view, R.string.mensage_conexao_criada_com_sucesso,Snackbar.LENGTH_SHORT)
+            /*Snackbar.make(view, R.string.mensage_conexao_criada_com_sucesso,Snackbar.LENGTH_SHORT)
                     .setAction(R.string.action_ok,null)
-                    .show();
+                    .show();*/
         } catch (SQLException ex){
             AlertDialog.Builder dlg = new AlertDialog.Builder(context);
             dlg.setTitle(R.string.title_erro);

@@ -39,7 +39,7 @@
         <item name="android:layout_width">68dp</item>
         <item name="android:layout_height">60dp</item>
         <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
         <item name="android:background">@drawable/borda_comanda</item>
         <item name="android:radius">20dp</item>
     </style>

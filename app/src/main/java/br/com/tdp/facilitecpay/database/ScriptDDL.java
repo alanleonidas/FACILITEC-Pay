@@ -89,7 +89,7 @@ public class ScriptDDL {
         sql.append("        COMV_COMANDA      VARCHAR(6) NOT NULL,");
         sql.append("        COMV_SEQUENCIA    INTEGER NOT NULL,");
         sql.append("        COMV_COBRANCA     VARCHAR(15) NOT NULL,");
-        sql.append("        COM_VALOR         NUMERIC(12,2))");
+        sql.append("        COMV_VALOR         NUMERIC(12,2))");
         return sql.toString();
     }
 }

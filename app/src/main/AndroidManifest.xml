@@ -20,7 +20,8 @@
         android:theme="@style/Theme.FACILITECPay">
         <activity
             android:name=".Finalizacao"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.FACILITECPay.NoActionBar"/>
         <activity
             android:name=".ListaComandas"
             android:exported="false"

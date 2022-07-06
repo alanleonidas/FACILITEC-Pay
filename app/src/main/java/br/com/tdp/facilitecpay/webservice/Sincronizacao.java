@@ -17,10 +17,12 @@ import java.util.List;
 import br.com.tdp.facilitecpay.database.Conexao;
 import br.com.tdp.facilitecpay.database.ConfiguracaoDAO;
 import br.com.tdp.facilitecpay.database.ListaComandasDAO;
+import br.com.tdp.facilitecpay.database.PagamentosComandaDAO;
 import br.com.tdp.facilitecpay.database.RepreseDAO;
 import br.com.tdp.facilitecpay.database.TipoComandaDAO;
 import br.com.tdp.facilitecpay.model.ComandasLiberadasModel;
 import br.com.tdp.facilitecpay.model.ConfiguracaoModel;
+import br.com.tdp.facilitecpay.model.PagamentosComandaModel;
 import br.com.tdp.facilitecpay.model.RepreseModel;
 import br.com.tdp.facilitecpay.model.TipoComandaModel;
 import br.com.tdp.facilitecpay.util.OpcaoSinc;
@@ -114,7 +116,7 @@ public class Sincronizacao extends AppCompatActivity implements DoComunicacao,Do
     private void onRegistrarTipoComanda(JSONObject object) throws JSONException {
         JSONArray parentArray = object.getJSONArray("result");
         JSONObject parentObjectnew = parentArray.getJSONObject(0);
-        JSONArray jsonArray = parentObjectnew.getJSONArray("cobrancas");
+        JSONArray jsonArray = parentObjectnew.getJSONArray("tiposcomanda");
         List<TipoComandaModel> listTipoComanda = new ArrayList<>();
         Gson gson = new Gson();
         TipoComandaDAO tipoComandaDAO = new TipoComandaDAO(conexao.retornaConexao(context, view));
@@ -141,6 +143,18 @@ public class Sincronizacao extends AppCompatActivity implements DoComunicacao,Do
             listComandasLiberadas.add(comandasLiberadasModel);
         }
         listaComandasDAO.inserirAll(listComandasLiberadas);
+
+        parentObjectnew = jsonArray.getJSONObject(0);
+        jsonArray = parentObjectnew.getJSONArray("COMANDAV");
+        List<PagamentosComandaModel> listPagamentosComandaModels = new ArrayList<>();
+        PagamentosComandaDAO listaPagamentosComandaDAO = new PagamentosComandaDAO(conexao.retornaConexao(context, view));
+        listaPagamentosComandaDAO.excluirTodos();
+        for(int i=0; i<jsonArray.length(); i++) {
+            JSONObject finalObject = jsonArray.getJSONObject(i);
+            PagamentosComandaModel pagamentosComandaModel = gson.fromJson(finalObject.toString(), PagamentosComandaModel.class);
+            listPagamentosComandaModels.add(pagamentosComandaModel);
+        }
+        listaPagamentosComandaDAO.inserirAll(listPagamentosComandaModels);
     }
 
     private void sincronizarReprese(){

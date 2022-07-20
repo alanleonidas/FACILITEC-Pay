@@ -203,6 +203,8 @@ public class ListaComandas extends AppCompatActivity {
             case ComandasFinalizacao:
                 loadComandasPorTipoComanda();
                 break;
+            case getCobrancas:
+                break;
         }
     }
 
@@ -222,7 +224,8 @@ public class ListaComandas extends AppCompatActivity {
     }
 
     public void onException(int mensagem){
-
+        onLoadComponentes();
+        loadComandasPorTipoComanda();
         AlertDialog.Builder dlgR = new AlertDialog.Builder(binding.getRoot().getContext());
         dlgR.setTitle(R.string.title_erro);
         dlgR.setMessage(mensagem);

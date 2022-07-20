@@ -17,7 +17,7 @@ import br.com.tdp.facilitecpay.model.PagamentosComandaModel;
 public class PagamentosComandaDAO {
     private String Tabela = "COMANDAV";
     private String SQLBase = "SELECT COMV_EMPRESA, COMV_TIPOCOMANDA, COMV_COMANDA, COMV_SEQUENCIA, "+
-            " COMV_COBRANCA, COMV_VALOR "+
+            " COMV_COBRANCA, COMV_VALOR, COMV_VALORAPP "+
             " FROM COMANDAV ";
     private SQLiteDatabase conexao;
     private Context context;
@@ -52,6 +52,7 @@ public class PagamentosComandaDAO {
         contentValues.put("COMV_SEQUENCIA",pagamentosComandaModel.getCOMV_SEQUENCIA());
         contentValues.put("COMV_COBRANCA",pagamentosComandaModel.getCOMV_COBRANCA());
         contentValues.put("COMV_VALOR",pagamentosComandaModel.getCOMV_VALOR());
+        contentValues.put("COMV_VALORAPP",pagamentosComandaModel.getCOMV_VALORAPP());
         return contentValues;
     }
     public void inserirAll(List<PagamentosComandaModel> listpaPagamentosComandaModels){
@@ -73,6 +74,24 @@ public class PagamentosComandaDAO {
         conexao.delete(Tabela, "COMV_EMPRESA=? AND COMV_TIPOCOMANDA=? AND COMV_COMANDA=? AND COMV_SEQUENCIA=?",where);
     }
 
+    public void excluirRegistroComanda(String empresa, String tipocomanda , String comanda, int sequencia, String cobranca){
+        String[] where;
+        String stringWhere = "COMV_EMPRESA=? AND COMV_TIPOCOMANDA=? AND COMV_COMANDA=? AND COMV_SEQUENCIA=?";
+
+        if (cobranca.equals("")) {
+            where = new String[4];
+        } else {
+            where = new String[5];
+            where[4] = String.valueOf(cobranca);
+            stringWhere = stringWhere + " AND COMV_COBRANCA=? ";
+        }
+        where[0] = String.valueOf(empresa);
+        where[1] = String.valueOf(tipocomanda);
+        where[2] = String.valueOf(comanda);
+        where[3] = String.valueOf(sequencia);
+        conexao.delete(Tabela, stringWhere,where);
+    }
+
     public void excluirTodos(){
         try{
             conexao.delete(Tabela, null,null);
@@ -86,15 +105,18 @@ public class PagamentosComandaDAO {
     }
 
     public void alterar(PagamentosComandaModel pagamentosComandaModel){
-        ContentValues contentValues = getContentValue(pagamentosComandaModel);
+         ContentValues contentValues = getContentValue(pagamentosComandaModel);
 
-        String[] where = new String[4];
+        String[] where = new String[5];
         where[0] = String.valueOf(pagamentosComandaModel.getCOMV_EMPRESA());
         where[1] = String.valueOf(pagamentosComandaModel.getCOMV_TIPOCOMANDA());
         where[2] = String.valueOf(pagamentosComandaModel.getCOMV_COMANDA());
         where[3] = String.valueOf(pagamentosComandaModel.getCOMV_SEQUENCIA());
+        where[4] = String.valueOf(pagamentosComandaModel.getCOMV_COBRANCA());
         try{
-            conexao.update(Tabela,contentValues,"",where);
+            conexao.update(Tabela,contentValues,
+                    " COMV_EMPRESA = ? AND COMV_TIPOCOMANDA = ? AND COMV_COMANDA =? AND COMV_SEQUENCIA =? AND COMV_COBRANCA = ?",
+                    where);
         } catch (SQLException ex) {
             AlertDialog.Builder dlg = new AlertDialog.Builder(context);
             dlg.setTitle(R.string.title_erro);
@@ -112,6 +134,7 @@ public class PagamentosComandaDAO {
         pagamentosComandaModel.setCOMV_SEQUENCIA(resultado.getInt(resultado.getColumnIndexOrThrow("COMV_SEQUENCIA")));
         pagamentosComandaModel.setCOMV_COBRANCA(resultado.getString(resultado.getColumnIndexOrThrow("COMV_COBRANCA")));
         pagamentosComandaModel.setCOMV_VALOR(resultado.getDouble(resultado.getColumnIndexOrThrow("COMV_VALOR")));
+        pagamentosComandaModel.setCOMV_VALORAPP(resultado.getDouble(resultado.getColumnIndexOrThrow("COMV_VALORAPP")));
         return pagamentosComandaModel;
     }
 
@@ -146,5 +169,40 @@ public class PagamentosComandaDAO {
 
 
         return pagamentosComandaModels;
+    }
+
+    public PagamentosComandaModel buscarPagamento(String empresa, String tipoComanda, String comanda, int sequencia, String cobranca) {
+        PagamentosComandaModel pagamentosComandaModel = null;
+
+        StringBuilder sql = new StringBuilder();
+        sql.append(SQLBase);
+        if (tipoComanda.equals("")==false){
+            sql.append(" WHERE COMV_EMPRESA ='"+String.valueOf(empresa)+"' and COMV_TIPOCOMANDA ='"+String.valueOf(tipoComanda)+"'"+
+                    "       and COMV_COMANDA ='"+String.valueOf(comanda)+"' and COMV_SEQUENCIA = "+Integer.toString(sequencia));
+            if (cobranca.equals("")==false){
+                sql.append(" and COMV_COBRANCA = '"+String.valueOf(cobranca)+"'");
+            }
+        }
+        sql.append(" ORDER BY COMV_EMPRESA, COMV_TIPOCOMANDA, COMV_COMANDA, COMV_SEQUENCIA");
+
+        try {
+            Cursor resultado = conexao.rawQuery(sql.toString(), new String[]{});
+
+            if (resultado.getCount() > 0) {
+                resultado.moveToFirst();
+                do {
+                    pagamentosComandaModel = retornaPagamentosComanda(resultado);
+                } while (resultado.moveToNext());
+            }
+        } catch (SQLException ex) {
+            AlertDialog.Builder dlg = new AlertDialog.Builder(context);
+            dlg.setTitle(R.string.title_erro);
+            dlg.setMessage(ex.getMessage());
+            dlg.setNeutralButton(R.string.action_ok, null);
+            dlg.show();
+        }
+
+
+        return pagamentosComandaModel;
     }
 }

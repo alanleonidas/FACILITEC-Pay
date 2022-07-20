@@ -1,8 +1,6 @@
 package br.com.tdp.facilitecpay.model;
 
 import java.io.Serializable;
-import java.sql.Time;
-import java.util.Date;
 import java.util.Objects;
 
 public class ComandasLiberadasModel implements Serializable {
@@ -26,6 +24,59 @@ public class ComandasLiberadasModel implements Serializable {
     private Double COUVER_ENTREGA;
     private Double TOTAL_RECEBIDO;
     private Double TOTAL_COMANDA;
+    private Double COM_VLRDESCONTO;
+    private Double COM_PORDESCONTO;
+    private Double COM_VLRDESCONTOAPP;
+    private Double COM_PORDESCONTOAPP;
+    private String SINCRONIZADO;
+
+    public void setCOM_SEQUENCIA(int COM_SEQUENCIA) {
+        this.COM_SEQUENCIA = COM_SEQUENCIA;
+    }
+
+    public void setCOM_MESA(int COM_MESA) {
+        this.COM_MESA = COM_MESA;
+    }
+
+    public Double getCOM_VLRDESCONTO() {
+        return COM_VLRDESCONTO;
+    }
+
+    public void setCOM_VLRDESCONTO(Double COM_VLRDESCONTO) {
+        this.COM_VLRDESCONTO = COM_VLRDESCONTO;
+    }
+
+    public Double getCOM_PORDESCONTO() {
+        return COM_PORDESCONTO;
+    }
+
+    public void setCOM_PORDESCONTO(Double COM_PORDESCONTO) {
+        this.COM_PORDESCONTO = COM_PORDESCONTO;
+    }
+
+    public Double getCOM_VLRDESCONTOAPP() {
+        return COM_VLRDESCONTOAPP;
+    }
+
+    public void setCOM_VLRDESCONTOAPP(Double COM_VLRDESCONTOAPP) {
+        this.COM_VLRDESCONTOAPP = COM_VLRDESCONTOAPP;
+    }
+
+    public Double getCOM_PORDESCONTOAPP() {
+        return COM_PORDESCONTOAPP;
+    }
+
+    public void setCOM_PORDESCONTOAPP(Double COM_PORDESCONTOAPP) {
+        this.COM_PORDESCONTOAPP = COM_PORDESCONTOAPP;
+    }
+
+    public String getSINCRONIZADO() {
+        return SINCRONIZADO;
+    }
+
+    public void setSINCRONIZADO(String SINCRONIZADO) {
+        this.SINCRONIZADO = SINCRONIZADO;
+    }
 
     public ComandasLiberadasModel(){
     }
@@ -35,7 +86,7 @@ public class ComandasLiberadasModel implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ComandasLiberadasModel that = (ComandasLiberadasModel) o;
-        return COM_COMANDA == that.COM_COMANDA;
+        return COM_COMANDA.equals(that.COM_COMANDA);
     }
 
     @Override
@@ -72,10 +123,6 @@ public class ComandasLiberadasModel implements Serializable {
         return COM_SEQUENCIA;
     }
 
-    public void setCOM_SEQUENCIA(Integer COM_SEQUENCIA) {
-        this.COM_SEQUENCIA = COM_SEQUENCIA;
-    }
-
     public String getCOM_STATUS() {
         return COM_STATUS;
     }
@@ -96,7 +143,7 @@ public class ComandasLiberadasModel implements Serializable {
         return COM_REPRESENTANTE;
     }
 
-    public void setCOM_REPRESENTANTE(String COM_REPRESE) {
+    public void setCOM_REPRESENTANTE(String COM_REPRESENTANTE) {
         this.COM_REPRESENTANTE = COM_REPRESENTANTE;
     }
 
@@ -142,10 +189,6 @@ public class ComandasLiberadasModel implements Serializable {
 
     public Integer getCOM_MESA() {
         return COM_MESA;
-    }
-
-    public void setCOM_MESA(Integer COM_MESA) {
-        this.COM_MESA = COM_MESA;
     }
 
     public String getCOM_IGNORATAXASERVICO() {

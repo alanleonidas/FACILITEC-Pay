@@ -8,15 +8,16 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/tvTituloTotal"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="@string/total"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
+            android:text="@string/total"
             android:textColor="@color/cinzaPrincipalTexto"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
         <TextView
             android:id="@+id/tvValorTotalComanda"
@@ -26,11 +27,82 @@
             android:text="@string/r_x_xxx_xx"
             android:textAlignment="textEnd"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/cinzaPrincipalTexto"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/separacao"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvDesconto"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:descendantFocusability="blocksDescendants"
+            android:focusable="true"
+            android:focusableInTouchMode="false"
+            android:background="@color/cinzaPrincipal"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="showDialogDesconto">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/container_desconto_foco">
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llContentCobranca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center|center"
+                    android:layout_margin="2dp">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".10"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        />
+                    <TextView
+                        android:id="@+id/tvDesconto"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".40"
+                        android:layout_gravity="center"
+                        android:text="@string/desconto"
+                        android:textSize="18sp"
+                        android:textColor="@color/cinzaPrincipalTexto"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/tvTotalDesconto"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".40"
+                        android:layout_toEndOf="@+id/cvDesconto"
+                        android:layout_gravity="center|end"
+                        android:text="@string/r_x_xxx_xx"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cinzaPrincipalTexto"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -48,47 +120,28 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:choiceMode="none"
-            android:dividerHeight="2px">
+            android:dividerHeight="2px"
+            android:scrollbars="vertical"
+            android:scrollbarSize="4dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:fadeScrollbars="false"
+            android:scrollbarThumbVertical="@drawable/scroll_recyclerview">
 
         </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
     <RelativeLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/tvTDesconto"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/desconto"
-            android:textColor="@color/cinzaPrincipalTexto"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvTotalDesconto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/tvTSaldo"
-            android:text="@string/r_x_xxx_xx"
-            android:textAlignment="textEnd"
-            android:textColor="@color/cinzaPrincipalTexto"
-            android:textSize="18sp"
-            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvTSaldo"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTDesconto"
-            android:text="@string/a_receber"
             android:layout_marginTop="10dp"
+            android:text="@string/a_receber"
             android:textColor="@color/vermelhoSecundario"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
         <LinearLayout
             android:layout_width="match_parent"
@@ -98,14 +151,13 @@
             android:id="@+id/tvAReceber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTDesconto"
             android:layout_toEndOf="@+id/tvTSaldo"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="@string/r_x_xxx_xx"
             android:textAlignment="textEnd"
             android:textColor="@color/vermelhoSecundario"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </RelativeLayout>

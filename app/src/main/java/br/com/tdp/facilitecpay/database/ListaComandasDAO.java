@@ -6,24 +6,22 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.SimpleTimeZone;
 
 import br.com.tdp.facilitecpay.R;
 import br.com.tdp.facilitecpay.model.ComandasLiberadasModel;
-import br.com.tdp.facilitecpay.model.RepreseModel;
 
 public class ListaComandasDAO {
     private String Tabela = "COMANDA";
     private String SQLBase = "SELECT COM_EMPRESA, COM_TIPOCOMANDA, COM_COMANDA, COM_SEQUENCIA, COM_STATUS, "+
-                             " COM_DATA, COM_REPRESENTANTE, COM_HORAABERTURA, COM_CAIXA,  "+
-                             " COM_TAXASERVICO, COM_TAXAENTREGA, COM_COUVER, COM_MESA, "+
+                             " COM_DATA, COM_REPRESENTANTE, COM_HORAABERTURA, COM_CAIXA, COM_TAXASERVICO, "+
+                             " COM_TAXAENTREGA, COM_COUVER, COM_MESA, COM_VLRDESCONTO, COM_PORDESCONTO, "+
                              " COM_IGNORATAXASERVICO, COM_NOMECLIENTE, TOTAL_PROD, VLR_TAXA_SERVICO, "+
-                             " COUVER_ENTREGA, TOTAL_RECEBIDO, TOTAL_COMANDA "+
+                             " COUVER_ENTREGA, TOTAL_RECEBIDO, TOTAL_COMANDA, COM_VLRDESCONTOAPP, "+
+                             " COM_PORDESCONTOAPP, SINCRONIZADO "+
                              " FROM COMANDA ";
     private SQLiteDatabase conexao;
     private Context context;
@@ -72,6 +70,11 @@ public class ListaComandasDAO {
         contentValues.put("COUVER_ENTREGA",comandasLiberadasModel.getCOUVER_ENTREGA());
         contentValues.put("TOTAL_RECEBIDO",comandasLiberadasModel.getTOTAL_RECEBIDO());
         contentValues.put("TOTAL_COMANDA",comandasLiberadasModel.getTOTAL_COMANDA());
+        contentValues.put("COM_VLRDESCONTO",comandasLiberadasModel.getCOM_VLRDESCONTO());
+        contentValues.put("COM_PORDESCONTO",comandasLiberadasModel.getCOM_PORDESCONTO());
+        contentValues.put("COM_VLRDESCONTOAPP",comandasLiberadasModel.getCOM_VLRDESCONTOAPP());
+        contentValues.put("COM_PORDESCONTOAPP",comandasLiberadasModel.getCOM_PORDESCONTOAPP());
+        contentValues.put("SINCRONIZADO",comandasLiberadasModel.getSINCRONIZADO());
         return contentValues;
     }
     public void inserirAll(List<ComandasLiberadasModel> listComandaLiberadasModel){
@@ -95,13 +98,12 @@ public class ListaComandasDAO {
 
     public void excluirTodos(){
         try{
+            //String[] where = new String[1];
+            //where[0] = String.valueOf("False");
+            //conexao.delete(Tabela, " SINCRONIZADO = ? or SINCRONIZADO IS NULL ",where);
             conexao.delete(Tabela, null,null);
         } catch (SQLException ex){
-            AlertDialog.Builder dlg = new AlertDialog.Builder(context);
-            dlg.setTitle(R.string.title_erro);
-            dlg.setMessage(ex.getMessage());
-            dlg.setNeutralButton(R.string.action_ok,null);
-            dlg.show();
+            Log.e("SERVICO", "Seu erro: ", ex);
         }
     }
 
@@ -114,13 +116,9 @@ public class ListaComandasDAO {
         where[2] = String.valueOf(comandasLiberadasModel.getCOM_COMANDA());
         where[3] = String.valueOf(comandasLiberadasModel.getCOM_SEQUENCIA());
         try{
-            conexao.update(Tabela,contentValues,"",where);
-            AlertDialog.Builder dlg = new AlertDialog.Builder(context);
-            dlg.setTitle(R.string.title_informacao);
-            dlg.setMessage("Representante alterado com Sucesso!");
-            dlg.setNeutralButton(R.string.action_ok,null);
-            dlg.setIcon(R.drawable.ic_baseline_check_circle_24);
-            dlg.show();
+            conexao.update(Tabela,contentValues,
+                    " COM_EMPRESA = ? AND COM_TIPOCOMANDA = ? AND COM_COMANDA = ? AND COM_SEQUENCIA = ? ",
+                    where);
         } catch (SQLException ex) {
             AlertDialog.Builder dlg = new AlertDialog.Builder(context);
             dlg.setTitle(R.string.title_erro);
@@ -152,6 +150,11 @@ public class ListaComandasDAO {
         comandasLiberadasModel.setCOUVER_ENTREGA(resultado.getDouble(resultado.getColumnIndexOrThrow("COUVER_ENTREGA")));
         comandasLiberadasModel.setTOTAL_RECEBIDO(resultado.getDouble(resultado.getColumnIndexOrThrow("TOTAL_RECEBIDO")));
         comandasLiberadasModel.setTOTAL_COMANDA(resultado.getDouble(resultado.getColumnIndexOrThrow("TOTAL_COMANDA")));
+        comandasLiberadasModel.setCOM_VLRDESCONTO(resultado.getDouble(resultado.getColumnIndexOrThrow("COM_VLRDESCONTO")));
+        comandasLiberadasModel.setCOM_PORDESCONTO(resultado.getDouble(resultado.getColumnIndexOrThrow("COM_PORDESCONTO")));
+        comandasLiberadasModel.setCOM_VLRDESCONTOAPP(resultado.getDouble(resultado.getColumnIndexOrThrow("COM_VLRDESCONTOAPP")));
+        comandasLiberadasModel.setCOM_PORDESCONTOAPP(resultado.getDouble(resultado.getColumnIndexOrThrow("COM_PORDESCONTOAPP")));
+        comandasLiberadasModel.setSINCRONIZADO(resultado.getString(resultado.getColumnIndexOrThrow("SINCRONIZADO")));
         return comandasLiberadasModel;
     }
 
@@ -185,5 +188,32 @@ public class ListaComandasDAO {
 
 
         return comandasLiberadasModels;
+    }
+
+    public boolean findExist(ComandasLiberadasModel comandasLiberadasModel){
+        boolean retorno = false;
+        StringBuilder sql = new StringBuilder();
+        sql.append(" SELECT COUNT(*) AS REG FROM COMANDA ");
+        sql.append(" WHERE COM_EMPRESA = '"+String.valueOf(comandasLiberadasModel.getCOM_EMPRESA())+"' ");
+        sql.append(" AND COM_TIPOCOMANDA = '"+String.valueOf(comandasLiberadasModel.getCOM_TIPOCOMANDA())+"' ");
+        sql.append(" AND COM_COMANDA = '"+String.valueOf(comandasLiberadasModel.getCOM_COMANDA())+"' ");
+        sql.append(" AND COM_SEQUENCIA = "+String.valueOf(comandasLiberadasModel.getCOM_SEQUENCIA().toString()));
+
+        try {
+            Cursor resultado = conexao.rawQuery(sql.toString(), new String[]{});
+            resultado.moveToFirst();
+            if (resultado.getInt(resultado.getColumnIndexOrThrow("REG")) > 0) {
+                retorno = true;
+            }
+        } catch (SQLException ex) {
+            AlertDialog.Builder dlg = new AlertDialog.Builder(context);
+            dlg.setTitle(R.string.title_erro);
+            dlg.setMessage(ex.getMessage());
+            dlg.setNeutralButton(R.string.action_ok, null);
+            dlg.show();
+        }
+
+
+        return retorno;
     }
 }

@@ -1,5 +1,5 @@
 package br.com.tdp.facilitecpay.util;
 
 public enum OpcaoSinc {
-    Represe, TipoComanda, ComandasFinalizacao, LoginAutorizado;
+    Represe, TipoComanda, ComandasFinalizacao, LoginAutorizado, getCobrancas, postFinalizarComanda;
 }

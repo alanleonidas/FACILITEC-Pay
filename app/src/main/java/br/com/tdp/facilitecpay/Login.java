@@ -1,5 +1,8 @@
 package br.com.tdp.facilitecpay;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.database.SQLException;
 import android.graphics.Bitmap;
@@ -8,8 +11,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AnticipateInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,15 +24,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
 import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,8 +54,6 @@ import br.com.tdp.facilitecpay.webservice.Sincronizacao;
 
 public class Login extends AppCompatActivity {
 
-    private static final int HTTP_REQUEST_TIMEOUT = 4000;
-    private static final int HTTP_READ_TIMEOUT = 2000;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityLoginBinding binding;
     private TextView titulo;
@@ -73,13 +78,14 @@ public class Login extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
+
         setContentView(binding.getRoot());
 
+
         setSupportActionBar(binding.appBarLogin.toolbar);
-        btnMenu = (Button)findViewById(R.id.menu);
+        permissoes();
+        btnMenu = findViewById(R.id.menu);
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,12 +129,16 @@ public class Login extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         navigationView.setNavigationItemSelectedListener(this::OnNavigationItemSelectedListener);
+
+        onVisibility(View.VISIBLE);
+    }
+
+
+    public void permissoes() {
         permissao = new Permissoes(this);
         permissao.HabilitarNetWork();
         permissao.HabilitarWifi();
         permissao.permissoesINTERNET();
-
-        onVisibility(View.VISIBLE);
     }
 
     public void onClickMenu(){
@@ -312,13 +322,14 @@ public class Login extends AppCompatActivity {
             case LoginAutorizado:
                 AlertDialog.Builder dlg = new AlertDialog.Builder(binding.getRoot().getContext());
                 dlg.setTitle(R.string.title_erro);
-                dlg.setMessage("Erro ao validar dados de acesso!");
+                dlg.setMessage(R.string.erro_dados_acesso);
                 dlg.setNeutralButton(R.string.action_ok,null);
                 dlg.show();
                 break;
             case Represe:
-                viewLogin.setVisibility(View.GONE);
-                onVisibility(View.INVISIBLE);
+                //viewLogin.setVisibility(View.GONE);
+                //onVisibility(View.INVISIBLE);
+                onLoadComponentes();
                 AlertDialog.Builder dlgR = new AlertDialog.Builder(binding.getRoot().getContext());
                 dlgR.setTitle(R.string.title_erro);
                 dlgR.setMessage(mensagem);

@@ -9,6 +9,15 @@ public class PagamentosComandaModel {
     private int COMV_SEQUENCIA;
     private String COMV_COBRANCA;
     private Double COMV_VALOR;
+    private Double COMV_VALORAPP;
+
+    public Double getCOMV_VALORAPP() {
+        return COMV_VALORAPP;
+    }
+
+    public void setCOMV_VALORAPP(Double COMV_VALORAPP) {
+        this.COMV_VALORAPP = COMV_VALORAPP;
+    }
 
     public String getCOMV_EMPRESA() {
         return COMV_EMPRESA;

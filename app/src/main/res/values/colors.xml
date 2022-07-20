@@ -16,6 +16,7 @@
     <color name="vermelhoTDPGradE">#8d0601</color>
     <color name="vermelhoSecundario">#E83C38</color>
     <color name="vermelhoSecundarioTransparencia">#26E83C38</color>
+    <color name="vermelhoScrollTransparencia">#59E83C38</color>
     <color name="cinzaPrincipal">#3d3d3d</color>
     <color name="cinzaPrincipalTexto">#322C38</color>
     <color name="cinzaSecundario">#595959</color>

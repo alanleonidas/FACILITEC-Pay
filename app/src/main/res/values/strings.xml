@@ -6,6 +6,8 @@
     <string name="campoSenha">Digite a Senha de Acesso</string>
     <string name="labelSenhaLogin">Digite a Senha</string>
     <string name="labelIPServidor">Informe o IP do Servidor, ex: 192.168.1.2</string>
+    <string name="labelDesconto">Informe o Desconto</string>
+    <string name="labelCobranca">Informe o Valor</string>
     <string name="labelPortaServidor">Informe a Porta de Comunicação, ex: 8688</string>
     <string name="entrar">Entrar</string>
     <string name="reconectar">Reconectar</string>
@@ -58,12 +60,21 @@
     <string name="venda_consumidor_teste">VENDA CONSUMIDOR TESTE</string>
     <string name="total_pedido">Total Pedido</string>
     <string name="recebido">Recebido</string>
-    <string name="receber">Á Receber</string>
+    <string name="receber">A Receber</string>
     <string name="r_1_110_99">R$ 1.110,99</string>
     <string name="r_20_00">R$ 20,00</string>
     <string name="r_1_090_99">R$ 1.090,99</string>
     <string name="r_x_xxx_xx">( - ) X.XXX,XX</string>
-    <string name="a_receber">À Receber</string>
+    <string name="a_receber">A Receber</string>
+    <string name="troco">Troco</string>
     <string name="desconto">Desconto</string>
+    <string name="cobranca">Cobrança</string>
     <string name="total">Total</string>
+    <string name="voltar">Voltar</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="desconto_por_valor">R$</string>
+    <string name="desconto_por_porcentagem">%</string>
+    <string name="dados_ultima_sincronizacao">Os dados serão da última sincronização!</string>
+    <string name="erro_dados_acesso">Erro ao validar dados de acesso!</string>
 </resources>

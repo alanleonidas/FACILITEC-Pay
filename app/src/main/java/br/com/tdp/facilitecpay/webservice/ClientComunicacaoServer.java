@@ -22,7 +22,7 @@ import br.com.tdp.facilitecpay.R;
 
 public class ClientComunicacaoServer implements Runnable{
     private static final int HTTP_REQUEST_TIMEOUT = 4000;
-    private static final int HTTP_READ_TIMEOUT = 2000;
+    private static final int HTTP_READ_TIMEOUT = 4000;
     private JSONObject parentObjectnew;
     private Context context;
     private String url;
@@ -79,6 +79,8 @@ public class ClientComunicacaoServer implements Runnable{
                     connection.setConnectTimeout(HTTP_REQUEST_TIMEOUT);
 
                     if (jsonEnvio != null){
+                        connection.setReadTimeout(5000);
+                        connection.setConnectTimeout(5000);
                         connection.setDoInput(true);
                         connection.setRequestMethod("GET");
                         connection.setRequestProperty("Accept", "application/json");
@@ -86,10 +88,7 @@ public class ClientComunicacaoServer implements Runnable{
                         connection.setDoOutput(true);
                         OutputStream outStream = connection.getOutputStream();
                         OutputStreamWriter outStreamWriter = new OutputStreamWriter(outStream, "UTF-8");
-                        connection.setRequestMethod("GET");
-
                         outStreamWriter.write(jsonEnvio.toString());
-                        //connection.getOutputStream().write(jsonEnvio.toString().getBytes(StandardCharsets.UTF_8));
                         outStreamWriter.flush();
                         outStreamWriter.close();
                         outStream.close();
@@ -102,7 +101,7 @@ public class ClientComunicacaoServer implements Runnable{
                     connection.connect();
                     Log.i("SERVICO", "Retorno: "+ connection.getResponseMessage());
                     Log.i("SERVICO", "Retorno: "+ connection.getResponseCode());
-                    if (connection.getResponseCode() == 200){
+                    if (connection.getResponseCode() == 200 || connection.getResponseCode() == 400 ){
 
                         InputStream stream = connection.getInputStream();
                         reader = new BufferedReader(new InputStreamReader(stream));

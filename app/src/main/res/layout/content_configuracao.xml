@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:autofillHints=""
             android:hint="@string/labelIPServidor"
-            android:inputType="textPhonetic"
+            android:inputType="textCapWords"
             android:minHeight="48dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColorHint="#757575" />

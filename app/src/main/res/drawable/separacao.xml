@@ -3,11 +3,11 @@
     android:shape="rectangle" >
 
     // A cor do background
-    <solid android:color="@color/vermelhoTDP"
-        android:alpha=".15"/>
+    <solid android:color="@color/cinzaSecundario"
+        android:alpha=".20"/>
 
     // Borda (tamanho e cor)
-    <stroke android:width="1dip" android:color="@color/vermelhoTDP" />
+    <stroke android:width="1dip" android:color="@color/cinzaSecundario" />
 
     // Arredondamento das bordas
 

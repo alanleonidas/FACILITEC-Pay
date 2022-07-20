@@ -27,11 +27,11 @@
 
     <ImageView
         android:id="@+id/tdpLogo"
-        android:layout_width="100dp"
+        android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_margin="50dp"
         android:contentDescription="@string/todo"
-        android:src="@drawable/logo_app"
+        android:src="@drawable/facilite_pay"
         app:layout_constraintEnd_toEndOf="@+id/tdpFundo"
         app:layout_constraintStart_toStartOf="@+id/tdpFundo"
         app:layout_constraintTop_toTopOf="@+id/tdpFundo"
@@ -101,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="@string/labelSenhaLogin"
-        android:inputType="textPassword"
+        android:inputType="textPassword|text"
         android:minHeight="48dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSelectHandleRight="@android:drawable/ic_lock_lock"

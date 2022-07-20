@@ -12,4 +12,5 @@ public class UrlWebService {
     public static String getCobrancas = "getCobrancas/";
     public static String getTipoComandaApi = "getTipoComandaApi/";
     public static String getComandasFinalizacao = "getComandasFinalizacao/";
+    public static String postFinalizarComanda = "FinalizarComanda/";
 }

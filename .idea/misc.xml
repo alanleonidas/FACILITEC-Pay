@@ -12,9 +12,15 @@
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/container_componente_borda_comanda.xml" value="0.1675" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/container_componente_numero_comanda.xml" value="0.1685" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/container_componentes_login.xml" value="0.2115" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/container_desconto_foco.xml" value="0.1785" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/container_meios_pagamentos.xml" value="0.1795" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/container_meios_pagamentos_comfoco.xml" value="0.265" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/container_meios_pagamentos_semfoco.xml" value="0.1795" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/container_titulo_dialogs.xml" value="0.265" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/detalhes_finalizacao_comanda.xml" value="0.2035" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/drawable_lista_pagamento.xml" value="0.1795" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/edit_text.xml" value="0.2115" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.265" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.162" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/ic_launcher_background.xml" value="0.187" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/ic_menu_camera.xml" value="0.213" />
@@ -23,9 +29,12 @@
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/ic_miscellaneous_services.xml" value="0.213" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/ic_representante.xml" value="0.213" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/ic_sobre.xml" value="0.213" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/scroll_recyclerview.xml" value="0.1985" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/separacao.xml" value="0.1785" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/drawable/side_nav_bar.xml" value="0.213" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/activity_configuracao.xml" value="0.196875" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/activity_dialog_cobranca.xml" value="0.196875" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/activity_dialog_desconto.xml" value="0.33" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/activity_finalizacao.xml" value="0.3757159221076747" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/activity_lista_comandas.xml" value="0.25" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/activity_login.xml" value="0.2554347826086957" />
@@ -35,6 +44,7 @@
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/card_view_comanda_selecionada_finalizacao.xml" value="0.33" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/card_view_comandas_para_finalizacao.xml" value="0.5" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/card_view_lista_meios_pagamentos.xml" value="0.67" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/card_view_meios_pagamentos.xml" value="0.67" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/content_configuracao.xml" value="0.3117709437963945" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/content_detalhe_finalizacao_comanda.xml" value="0.3975757575757576" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/content_lista_pagamentos.xml" value="0.5" />
@@ -45,6 +55,8 @@
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/fragment_home.xml" value="0.2554347826086957" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/fragment_login.xml" value="0.19166666666666668" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/fragment_slideshow.xml" value="0.2554347826086957" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/layout_dialog_cobranca.xml" value="0.196875" />
+        <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/layout_dialog_desconto.xml" value="0.33" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/menu_listacomandas.xml" value="0.1453125" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/layout/nav_header_login.xml" value="0.2554347826086957" />
         <entry key="..\:/Projetos/TDP/FACILITECPay/app/src/main/res/menu/activity_main_drawer.xml" value="0.371875" />

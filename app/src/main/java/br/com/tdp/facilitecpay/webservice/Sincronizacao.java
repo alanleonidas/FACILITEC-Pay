@@ -14,12 +14,15 @@ import org.json.JSONObject;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+
+import br.com.tdp.facilitecpay.database.CobraDAO;
 import br.com.tdp.facilitecpay.database.Conexao;
 import br.com.tdp.facilitecpay.database.ConfiguracaoDAO;
 import br.com.tdp.facilitecpay.database.ListaComandasDAO;
 import br.com.tdp.facilitecpay.database.PagamentosComandaDAO;
 import br.com.tdp.facilitecpay.database.RepreseDAO;
 import br.com.tdp.facilitecpay.database.TipoComandaDAO;
+import br.com.tdp.facilitecpay.model.CobraModel;
 import br.com.tdp.facilitecpay.model.ComandasLiberadasModel;
 import br.com.tdp.facilitecpay.model.ConfiguracaoModel;
 import br.com.tdp.facilitecpay.model.PagamentosComandaModel;
@@ -60,6 +63,12 @@ public class Sincronizacao extends AppCompatActivity implements DoComunicacao,Do
             case ComandasFinalizacao:
                 sincronizarComandasLiberadas();
                 break;
+            case getCobrancas:
+                sincronizargetCobrancas();
+                break;
+            case postFinalizarComanda:
+                postFinalizarComanda();
+                break;
         }
     }
 
@@ -84,9 +93,25 @@ public class Sincronizacao extends AppCompatActivity implements DoComunicacao,Do
                     callbackException.onException(e.hashCode());
                 }
                 break;
+            case getCobrancas:
+                try {
+                    onRegistrarCobrancas(object);
+                    callback.onPosExecute(object);
+                } catch (JSONException e) {
+                    callbackException.onException(e.hashCode());
+                }
+                break;
             case ComandasFinalizacao:
                 try {
                     onRegistrarComandasLiberadas(object);
+                    callback.onPosExecute(object);
+                } catch (JSONException e) {
+                    callbackException.onException(e.hashCode());
+                }
+                break;
+            case postFinalizarComanda:
+                try {
+                    onFinalizarComanda(object);
                     callback.onPosExecute(object);
                 } catch (JSONException e) {
                     callbackException.onException(e.hashCode());
@@ -129,6 +154,22 @@ public class Sincronizacao extends AppCompatActivity implements DoComunicacao,Do
         tipoComandaDAO.inserirAll(listTipoComanda);
     }
 
+    private void onRegistrarCobrancas(JSONObject object) throws JSONException {
+        JSONArray parentArray = object.getJSONArray("result");
+        JSONObject parentObjectnew = parentArray.getJSONObject(0);
+        JSONArray jsonArray = parentObjectnew.getJSONArray("cobrancas");
+        List<CobraModel> listcobraModels = new ArrayList<>();
+        Gson gson = new Gson();
+        CobraDAO cobraDAO = new CobraDAO(conexao.retornaConexao(context, view));
+        cobraDAO.excluirTodos();
+        for(int i=0; i<jsonArray.length(); i++) {
+            JSONObject finalObject = jsonArray.getJSONObject(i);
+            CobraModel cobraModel = gson.fromJson(finalObject.toString(), CobraModel.class);
+            listcobraModels.add(cobraModel);
+        }
+        cobraDAO.inserirAll(listcobraModels);
+    }
+
     private void onRegistrarComandasLiberadas(JSONObject object) throws JSONException {
         JSONArray parentArray = object.getJSONArray("result");
         JSONObject parentObjectnew = parentArray.getJSONObject(0);
@@ -140,21 +181,30 @@ public class Sincronizacao extends AppCompatActivity implements DoComunicacao,Do
         for(int i=0; i<jsonArray.length(); i++) {
             JSONObject finalObject = jsonArray.getJSONObject(i);
             ComandasLiberadasModel comandasLiberadasModel = gson.fromJson(finalObject.toString(), ComandasLiberadasModel.class);
-            listComandasLiberadas.add(comandasLiberadasModel);
+            if (listaComandasDAO.findExist(comandasLiberadasModel)!=true){
+                listComandasLiberadas.add(comandasLiberadasModel);
+
+                JSONArray jsonArrayV = finalObject.getJSONArray("COMANDAV");
+                List<PagamentosComandaModel> listPagamentosComandaModels = new ArrayList<>();
+                PagamentosComandaDAO listaPagamentosComandaDAO = new PagamentosComandaDAO(conexao.retornaConexao(context, view));
+                listaPagamentosComandaDAO.excluirRegistroComanda(comandasLiberadasModel.getCOM_EMPRESA(),
+                        comandasLiberadasModel.getCOM_TIPOCOMANDA(), comandasLiberadasModel.getCOM_COMANDA(),
+                        comandasLiberadasModel.getCOM_SEQUENCIA(),"");
+                for(int a=0; a<jsonArrayV.length(); a++) {
+                    JSONObject finalObjectV = jsonArrayV.getJSONObject(a);
+                    PagamentosComandaModel pagamentosComandaModel = gson.fromJson(finalObjectV.toString(), PagamentosComandaModel.class);
+                    listPagamentosComandaModels.add(pagamentosComandaModel);
+                }
+                listaPagamentosComandaDAO.inserirAll(listPagamentosComandaModels);
+            }
         }
         listaComandasDAO.inserirAll(listComandasLiberadas);
 
-        parentObjectnew = jsonArray.getJSONObject(0);
-        jsonArray = parentObjectnew.getJSONArray("COMANDAV");
-        List<PagamentosComandaModel> listPagamentosComandaModels = new ArrayList<>();
-        PagamentosComandaDAO listaPagamentosComandaDAO = new PagamentosComandaDAO(conexao.retornaConexao(context, view));
-        listaPagamentosComandaDAO.excluirTodos();
-        for(int i=0; i<jsonArray.length(); i++) {
-            JSONObject finalObject = jsonArray.getJSONObject(i);
-            PagamentosComandaModel pagamentosComandaModel = gson.fromJson(finalObject.toString(), PagamentosComandaModel.class);
-            listPagamentosComandaModels.add(pagamentosComandaModel);
-        }
-        listaPagamentosComandaDAO.inserirAll(listPagamentosComandaModels);
+    }
+
+    private void onFinalizarComanda(JSONObject object) throws JSONException {
+        JSONArray parentArray = object.getJSONArray("result");
+        JSONObject parentObjectnew = parentArray.getJSONObject(0);
     }
 
     private void sincronizarReprese(){
@@ -174,6 +224,21 @@ public class Sincronizacao extends AppCompatActivity implements DoComunicacao,Do
     private void sincronizarComandasLiberadas(){
         ClientComunicacaoServer comunicacaoServer = new ClientComunicacaoServer(context,
                 "http://"+configuracao.getCONF_IP()+":"+configuracao.getCONF_PORTA()+UrlWebService.BaseAPI+UrlWebService.getComandasFinalizacao,
+                jsonObject, this::onPosExecute, this::onException);
+        comunicacaoServer.execute("Comunicação","Sincronizando dados",true);
+    }
+
+
+    private void sincronizargetCobrancas(){
+        ClientComunicacaoServer comunicacaoServer = new ClientComunicacaoServer(context,
+                "http://"+configuracao.getCONF_IP()+":"+configuracao.getCONF_PORTA()+UrlWebService.BaseAPI+UrlWebService.getCobrancas,
+                jsonObject, this::onPosExecute, this::onException);
+        comunicacaoServer.execute("Comunicação","Sincronizando dados",true);
+    }
+
+    private void postFinalizarComanda(){
+        ClientComunicacaoServer comunicacaoServer = new ClientComunicacaoServer(context,
+                "http://"+configuracao.getCONF_IP()+":"+configuracao.getCONF_PORTA()+UrlWebService.BaseAPI+UrlWebService.postFinalizarComanda,
                 jsonObject, this::onPosExecute, this::onException);
         comunicacaoServer.execute("Comunicação","Sincronizando dados",true);
     }

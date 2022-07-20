@@ -40,7 +40,8 @@ public class ScriptDDL {
         sql.append("        COB_DESCRICAO       VARCHAR(15) NOT NULL,");
         sql.append("        COB_TIPOCOB         VARCHAR(2),");
         sql.append("        COB_CODIGO          VARCHAR(2), ");
-        sql.append("        COB_OCULTABALCAO    VARCHAR(5)) ");
+        sql.append("        COB_OCULTABALCAO    VARCHAR(5),");
+        sql.append("        COB_CARTEIRADIGITAL VARCHAR(30))");
         return sql.toString();
     }
 
@@ -69,6 +70,10 @@ public class ScriptDDL {
         sql.append("        COM_TAXASERVICO        NUMERIC(12,2),");
         sql.append("        COM_TAXAENTREGA        NUMERIC(12,2),");
         sql.append("        COM_COUVER             NUMERIC(12,2),");
+        sql.append("        COM_VLRDESCONTO        NUMERIC(12,2),");
+        sql.append("        COM_PORDESCONTO        NUMERIC(12,2),");
+        sql.append("        COM_VLRDESCONTOAPP     NUMERIC(12,2),");
+        sql.append("        COM_PORDESCONTOAPP     NUMERIC(12,2),");
         sql.append("        COM_MESA               INTEGER,");
         sql.append("        COM_IGNORATAXASERVICO  VARCHAR(5),");
         sql.append("        COM_NOMECLIENTE        VARCHAR(50),");
@@ -76,7 +81,9 @@ public class ScriptDDL {
         sql.append("        VLR_TAXA_SERVICO       NUMERIC(12,2),");
         sql.append("        COUVER_ENTREGA         NUMERIC(12,2),");
         sql.append("        TOTAL_RECEBIDO         NUMERIC(12,2),");
-        sql.append("        TOTAL_COMANDA          NUMERIC(12,2))");
+        sql.append("        TOTAL_COMANDA          NUMERIC(12,2)," );
+        sql.append("        SINCRONIZADO           VARCHAR(5)" );
+        sql.append(")");
         return sql.toString();
     }
 
@@ -84,12 +91,13 @@ public class ScriptDDL {
         StringBuilder sql = new StringBuilder();
 
         sql.append("CREATE TABLE COMANDAV (");
-        sql.append("        COMV_EMPRESA      VARCHAR(2) NOT NULL,");
-        sql.append("        COMV_TIPOCOMANDA  VARCHAR(2) NOT NULL,");
-        sql.append("        COMV_COMANDA      VARCHAR(6) NOT NULL,");
-        sql.append("        COMV_SEQUENCIA    INTEGER NOT NULL,");
-        sql.append("        COMV_COBRANCA     VARCHAR(15) NOT NULL,");
-        sql.append("        COMV_VALOR         NUMERIC(12,2))");
+        sql.append("        COMV_EMPRESA       VARCHAR(2) NOT NULL,");
+        sql.append("        COMV_TIPOCOMANDA   VARCHAR(2) NOT NULL,");
+        sql.append("        COMV_COMANDA       VARCHAR(6) NOT NULL,");
+        sql.append("        COMV_SEQUENCIA     INTEGER NOT NULL,");
+        sql.append("        COMV_COBRANCA      VARCHAR(15) NOT NULL,");
+        sql.append("        COMV_VALOR         NUMERIC(12,2),");
+        sql.append("        COMV_VALORAPP      NUMERIC(12,2))");
         return sql.toString();
     }
 }

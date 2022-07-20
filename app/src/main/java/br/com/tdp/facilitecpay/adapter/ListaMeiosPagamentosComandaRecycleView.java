@@ -1,17 +1,14 @@
 package br.com.tdp.facilitecpay.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DecimalFormat;
@@ -19,17 +16,28 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.tdp.facilitecpay.Finalizacao;
 import br.com.tdp.facilitecpay.R;
+import br.com.tdp.facilitecpay.database.PagamentosComandaDAO;
 import br.com.tdp.facilitecpay.model.ComandasLiberadasModel;
 import br.com.tdp.facilitecpay.model.PagamentosComandaModel;
+import br.com.tdp.facilitecpay.util.DoAtualizarCobrancas;
+import br.com.tdp.facilitecpay.util.FuncoesUtil;
 
-public class ListaMeiosPagamentosComandaRecycleView extends RecyclerView.Adapter<ListaMeiosPagamentosComandaRecycleView.ViewHolderListaMeiosPagamentosComanda> implements Filterable {
+public class ListaMeiosPagamentosComandaRecycleView extends RecyclerView.Adapter<ListaMeiosPagamentosComandaRecycleView.ViewHolderListaMeiosPagamentosComanda> implements Filterable, DoAtualizarCobrancas {
     private List<PagamentosComandaModel> listPagamentosComandaModels;
     private List<PagamentosComandaModel> listPagamentosComandaModelsFull;
+    private ComandasLiberadasModel comandasLiberadasModel;
+    private PagamentosComandaDAO pagamentosComandaDAO;
+    private DoAtualizarCobrancas callback;
 
-    public ListaMeiosPagamentosComandaRecycleView(List<PagamentosComandaModel> listPagamentosComandaModels){
+    public ListaMeiosPagamentosComandaRecycleView(List<PagamentosComandaModel> listPagamentosComandaModels,
+                                                  ComandasLiberadasModel comandasLiberadasModel,
+                                                  PagamentosComandaDAO pagamentosComandaDAO,
+                                                  DoAtualizarCobrancas callback){
         this.listPagamentosComandaModels = listPagamentosComandaModels;
+        this.comandasLiberadasModel = comandasLiberadasModel;
+        this.pagamentosComandaDAO = pagamentosComandaDAO;
+        this.callback = callback;
         listPagamentosComandaModelsFull = new ArrayList<>(listPagamentosComandaModels);
     }
 
@@ -49,7 +57,7 @@ public class ListaMeiosPagamentosComandaRecycleView extends RecyclerView.Adapter
             PagamentosComandaModel pagamentosComandaModel = listPagamentosComandaModels.get(position);
             holder.tvCobranca.setText(pagamentosComandaModel.getCOMV_COBRANCA());
             NumberFormat formatter = new DecimalFormat("0.00");
-            holder.tvValor.setText("( - ) "+formatter.format(pagamentosComandaModel.getCOMV_VALOR()));
+            holder.tvValor.setText("( - ) "+formatter.format(pagamentosComandaModel.getCOMV_VALOR() + pagamentosComandaModel.getCOMV_VALORAPP()));
         }
     }
 
@@ -92,10 +100,16 @@ public class ListaMeiosPagamentosComandaRecycleView extends RecyclerView.Adapter
         }
     };
 
+    @Override
+    public void onConcluir() {
+        callback.onConcluir();
+    }
+
 
     public class ViewHolderListaMeiosPagamentosComanda extends RecyclerView.ViewHolder {
         public TextView tvCobranca;
         public TextView tvValor;
+        private FuncoesUtil funcoes = new FuncoesUtil();
         public ViewHolderListaMeiosPagamentosComanda(View itemView, final Context context) {
             super(itemView);
 
@@ -105,10 +119,17 @@ public class ListaMeiosPagamentosComandaRecycleView extends RecyclerView.Adapter
                 @Override
                 public void onClick(View view) {
                     if (listPagamentosComandaModels.size() > 0) {
-                        /*PagamentosComandaModel pagamentosComandaModel = listPagamentosComandaModels.get(getLayoutPosition());
-
-                        Intent it = new Intent(context, Finalizacao.class);
-                        context.startActivity(it);*/
+                        String valorS = tvValor.getText().toString().replace(',','.');
+                        valorS = valorS.toString().replace('(',' ');
+                        valorS = valorS.toString().replace('-',' ');
+                        valorS = valorS.toString().replace(')',' ');
+                        valorS = valorS.toString().trim();
+                        Double valor = Double.parseDouble(valorS.toString());
+                        funcoes.showDialogCobranca(view, comandasLiberadasModel,
+                                pagamentosComandaDAO,
+                                tvCobranca.getText().toString(),
+                                valor,
+                                ListaMeiosPagamentosComandaRecycleView.this::onConcluir) ;
                     }
                 }
             });
